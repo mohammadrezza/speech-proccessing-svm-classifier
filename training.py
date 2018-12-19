@@ -2,6 +2,7 @@ import scipy.io.wavfile as wav
 import os
 import progressbar
 from blueprints import *
+from feature_extraction import extract
 
 if __name__ == "__main__":
 
@@ -15,3 +16,4 @@ if __name__ == "__main__":
     def ext_feat():
         for i, file in enumerate(files):
             _, sig = wav.read(os.path.join(DATA_SET_PATH, file))
+            features = extract(sig)
