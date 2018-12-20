@@ -30,6 +30,7 @@ def extract(sig):
     calc_all_feat(mfcc_feat)
     calc_all_feat(mfcc_feat_delta)
     calc_all_feat(mfcc_feat_delta_delta)
+
     # endregion
 
     # region calculate zero cross rating
@@ -49,4 +50,17 @@ def extract(sig):
     calc_all_feat(np.array([zcrs]).reshape(len(zcrs), 1))
 
     # endregion
-    
+
+    # region calculate energy
+    def energy(frames, eta):
+        energys = []
+        for frame in frames:
+            energy = 1 / len(frame) * np.sum(np.power(frame, 2))
+            energys.append(energy)
+        return energys
+
+    energys = energy(sig_frames, 0)
+    calc_all_feat(np.array([energys]).reshape(len(energys), 1))
+    # endregion
+
+    return feat
