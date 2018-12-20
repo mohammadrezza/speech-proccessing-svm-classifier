@@ -17,3 +17,5 @@ if __name__ == "__main__":
         for i, file in enumerate(files):
             _, sig = wav.read(os.path.join(DATA_SET_PATH, file))
             features = extract(sig)
+
+    ext_feat()
