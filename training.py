@@ -26,11 +26,11 @@ if __name__ == "__main__":
             gender_lables.append(Label_Map[file[1]])
             bar.update(i + 1)
 
+    ext_feat()
 
     save(features, WORDS_FEATURES, MODELS_PATH)
     save(words_labels, WORDS_LABLES, MODELS_PATH)
-    save(gender_lables, Gender_LABLES, MODELS_PATH)
+    save(gender_lables, GENDER_LABLES, MODELS_PATH)
     bar.finish()
     print("Done.")
 
-    ext_feat()
