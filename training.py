@@ -3,6 +3,7 @@ import os
 import progressbar
 from blueprints import *
 from feature_extraction import extract
+from utility import save
 
 if __name__ == "__main__":
 
@@ -11,11 +12,25 @@ if __name__ == "__main__":
                                   widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
     bar.start()
     print("Extacting features ...")
+    features = []
+    words_labels = []
+    gender_lables = []
 
 
     def ext_feat():
         for i, file in enumerate(files):
             _, sig = wav.read(os.path.join(DATA_SET_PATH, file))
-            features = extract(sig)
+            feats = extract(sig)
+            features.append(feats)
+            words_labels.append(Label_Map[file[0]])
+            gender_lables.append(Label_Map[file[1]])
+            bar.update(i + 1)
+
+
+    save(features, WORDS_FEATURES, MODELS_PATH)
+    save(words_labels, WORDS_LABLES, MODELS_PATH)
+    save(gender_lables, Gender_LABLES, MODELS_PATH)
+    bar.finish()
+    print("Done.")
 
     ext_feat()
