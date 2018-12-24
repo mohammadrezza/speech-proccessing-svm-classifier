@@ -1,5 +1,8 @@
 DATA_SET_PATH = ".\\DataSet"
 MODELS_PATH = ".\\Models"
+TEST_PATH = ".\\Test"
+RESPONSE_SOUNDS_PATH = ".\\Responses"
+ResponseMap = {2: "HI.mp3", -2: "BYE.mp3", -1: "LADY.mp3", 1: "MAN.mp3"}
 Label_Map = {"M": 1, "F": -1, "H": 2, "B": -2}  # male or female # hi or bye
 WORDS_MODEL_NAME = "WORDSModel"
 GENDER_MODEL_NAME = "GenderModel"
